@@ -52,16 +52,16 @@ https://en.wikipedia.org/wiki/Ultraviolet
 
 - **AnalogUVSensor()** Constructor.
 - **void begin(uint8_t analogPin, float volts = 5.0, uint16_t maxADC = 1023)** 
-set the parameters of the sensor, analogPin, volts and maxADC to specify the internal ADC. 
+set the parameters of the sensor, analogPin, volts and maxADC to specify the internal ADC. Volts and maxADC have a default so these can be omitted.
 Note that one needs to reset these parameters if the settings of the internal ADC are 
-changed e.g. to INTERNAL_1V1 or so.
-- **float read(uint8_t times = 1)** read the analogue sensor one (or more) times to 
-average the reading. This can improve the accuracy of the reading.
-- **float mV2index(uint16_t milliVolt)** The conversion formula from milliVolt to the UV index. 
-This function is used internally by the **read()** function. 
+changed e.g. to INTERNAL_1V1 to change the accuracy.
+- **float read(uint8_t times = 1)** Returns the UV index.  
+Read the analogue sensor one (or more) times to average the reading. 
+This can improve the accuracy of the reading.
+- **float mV2index(uint16_t milliVolt)** Returns the UV index.  The conversion formula from milliVolt to the UV index, used internally by the **read()** function.  
 This function can also be called with a voltage measured from an external ADC.
 - **char index2color(float index)** Converts an index to the first letter of Green, 
-Yellow, Orange, Red or Purple. Can be used as indication on a user interface. 
+Yellow, Orange, Red or Purple. Can be used as indication on a user interface.  
 This function can also be called with an index from an other UV index sensor.
 
 
@@ -69,7 +69,7 @@ This function can also be called with an index from an other UV index sensor.
 
 - **void setPowerPin(uint8_t powerPin, bool invert = false)** 
 Can be used to control the power of the sensor e.g. for low power mode. 
-Optionally one can use the invert flag to invert the HIGH LOW levels e.g. to control the sensor with an extra MOSFET.
+Optionally one can set the invert flag to **true** to invert the **HIGH LOW** levels.
 - **void switchOff()** idem.
 - **void switchOn()** idem.
 
