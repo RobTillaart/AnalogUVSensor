@@ -23,11 +23,10 @@
 
 #include <ArduinoUnitTests.h>
 
+#define A0      0
 
 #include "Arduino.h"
 #include "AnalogUVsensor.h"
-
-#define A0      0
 
 
 unittest_setup()
@@ -42,7 +41,38 @@ unittest_teardown()
 
 unittest(constructor)
 {
+  fprintf(stderr, "VERSION: %s\n",  ANALOG_UVSENSOR_LIB_VERSION);
+  AnalogUVSensor AUV;
 
+  AUV.begin(A0);
+  fprintf(stderr, "UV: %f\n", AUV.read());
+}
+
+
+unittest(mv2index)
+{
+  AnalogUVSensor AUV;
+
+  AUV.begin(A0);
+  float uvi;
+  for (uint16_t milliVolt = 0; milliVolt < 1200; milliVolt += 50)
+  {
+    uvi = AUV.mV2index(milliVolt);
+    fprintf(stderr, "%d\t %f\n", milliVolt, uvi);
+  }
+}
+
+unittest(index2color)
+{
+  AnalogUVSensor AUV;
+
+  AUV.begin(A0);
+  char c;
+  for (uint8_t idx = 0; idx < 12; idx++)
+  {
+    c = AUV.index2color(idx);
+    fprintf(stderr, "%c\t %f\n", idx, c);
+  }
 }
 
 

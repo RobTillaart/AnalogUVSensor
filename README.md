@@ -38,7 +38,8 @@ and therefore not suitable for e.g. medical or industrial usage.
 Note: UV radiation will not go through glass, so inside you will most likely always read zero. 
 This may help to calibrate the zero level of the sensor.
 
-Note: depending on the light source used, the table above is incorrect.
+Note: depending on the light source used, the table above is incorrect. 
+If one wants to use other values one need to fix this in the **mv2index()** function.
 
 
 ### Sensitivity
@@ -52,14 +53,15 @@ https://en.wikipedia.org/wiki/Ultraviolet
 
 - **AnalogUVSensor()** Constructor.
 - **void begin(uint8_t analogPin, float volts = 5.0, uint16_t maxADC = 1023)** 
-set the parameters of the sensor, analogPin, volts and maxADC to specify the internal ADC. Volts and maxADC have a default so these can be omitted.
+set the parameters of the sensor, analogPin, volts and maxADC to specify the internal ADC. Volts and maxADC have a default so these can be omitted.  
 Note that one needs to reset these parameters if the settings of the internal ADC are 
 changed e.g. to INTERNAL_1V1 to change the accuracy.
 - **float read(uint8_t times = 1)** Returns the UV index.  
 Read the analogue sensor one (or more) times to average the reading. 
 This can improve the accuracy of the reading.
-- **float mV2index(uint16_t milliVolt)** Returns the UV index.  The conversion formula from milliVolt to the UV index, used internally by the **read()** function.  
-This function can also be called with a voltage measured from an external ADC.
+- **float mV2index(uint16_t milliVolt)** Returns the UV index.  
+The conversion formula from milliVolt to the UV index used internally by the **read()** function.  
+This function can also be called with a voltage measured with an external ADC.  
 - **char index2color(float index)** Converts an index to the first letter of Green, 
 Yellow, Orange, Red or Purple. Can be used as indication on a user interface.  
 This function can also be called with an index from an other UV index sensor.
@@ -67,11 +69,13 @@ This function can also be called with an index from an other UV index sensor.
 
 #### Power interface
 
+Works only if setPowerPin is called properly.
+
 - **void setPowerPin(uint8_t powerPin, bool invert = false)** 
 Can be used to control the power of the sensor e.g. for low power mode. 
-Optionally one can set the invert flag to **true** to invert the **HIGH LOW** levels.
-- **void switchOff()** idem.
-- **void switchOn()** idem.
+Optionally one can set the invert flag to **true** to invert the **HIGH LOW** levels e.g. when the analogue sensor is switched through a MOSFET.
+- **void switchOff()** should switch off the power of the sensor. 
+- **void switchOn()** should switch on the power of the sensor.
 
 
 ### Future
