@@ -26,7 +26,7 @@
 #define A0      0
 
 #include "Arduino.h"
-#include "AnalogUVsensor.h"
+#include "AnalogUVSensor.h"
 
 
 unittest_setup()
