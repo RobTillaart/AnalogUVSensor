@@ -15,9 +15,11 @@
 AnalogUVSensor::AnalogUVSensor()
 {
   // defaults from UNO.
-  _analogPin = A0;
+  _analogPin = 14;  // A0
   _volts     = 5;
   _maxADC    = 1023;
+  _powerPin  = -1;
+  _invert    = false;
 }
 
 

@@ -71,7 +71,7 @@ unittest(index2color)
   for (uint8_t idx = 0; idx < 12; idx++)
   {
     c = AUV.index2color(idx);
-    fprintf(stderr, "%c\t %f\n", idx, c);
+    fprintf(stderr, "%d\t %c\n", idx, c);
   }
 }
 

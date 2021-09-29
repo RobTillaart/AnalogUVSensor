@@ -34,11 +34,11 @@ public:
 
 
 private:
-  uint8_t  _analogPin = A0;
-  uint8_t  _powerPin  = -1;
-  bool     _invert    = false;
-  float    _volts     = 5;
-  uint16_t _maxADC    = 1023;
+  uint8_t  _analogPin;
+  float    _volts;
+  uint16_t _maxADC;
+  uint8_t  _powerPin;
+  bool     _invert;
 };
 
 
