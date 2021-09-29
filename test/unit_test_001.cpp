@@ -46,6 +46,8 @@ unittest(constructor)
 
   AUV.begin(A0);
   fprintf(stderr, "UV: %f\n", AUV.read());
+  
+  assertEqualFloat(0.000000, AUV.read(), 0.01);
 }
 
 
@@ -61,7 +63,8 @@ unittest(mv2index)
     fprintf(stderr, "%d\t %f\n", milliVolt, uvi);
   }
 
-  assertEqualFloat(0.000000, AUV.mV2index(0)  , 0.01);
+  assertEqualFloat(0.000000, AUV.mV2index(0), 0.01);
+  assertEqualFloat(0.000000, AUV.mV2index(50), 0.01);
   assertEqualFloat(0.282486, AUV.mV2index(100), 0.01);
   assertEqualFloat(0.847458, AUV.mV2index(200), 0.01);
   assertEqualFloat(1.856804, AUV.mV2index(300), 0.01);
