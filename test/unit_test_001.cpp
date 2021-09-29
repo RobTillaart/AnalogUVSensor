@@ -60,19 +60,40 @@ unittest(mv2index)
     uvi = AUV.mV2index(milliVolt);
     fprintf(stderr, "%d\t %f\n", milliVolt, uvi);
   }
+
+  assertEqualFloat(0.000000, AUV.mV2index(0)  , 0.01);
+  assertEqualFloat(0.282486, AUV.mV2index(100), 0.01);
+  assertEqualFloat(0.847458, AUV.mV2index(200), 0.01);
+  assertEqualFloat(1.856804, AUV.mV2index(300), 0.01);
+  assertEqualFloat(2.905457, AUV.mV2index(400), 0.01);
+  assertEqualFloat(3.954111, AUV.mV2index(500), 0.01);
+  assertEqualFloat(5.002764, AUV.mV2index(600), 0.01);
+  assertEqualFloat(6.051417, AUV.mV2index(700), 0.01);
+  assertEqualFloat(7.100070, AUV.mV2index(800), 0.01);
+  assertEqualFloat(8.148723, AUV.mV2index(900), 0.01);
+  assertEqualFloat(9.197376, AUV.mV2index(1000), 0.01);
+  assertEqualFloat(10.24602, AUV.mV2index(1100), 0.01);
 }
+
 
 unittest(index2color)
 {
   AnalogUVSensor AUV;
 
   AUV.begin(A0);
-  char c;
-  for (uint8_t idx = 0; idx < 12; idx++)
-  {
-    c = AUV.index2color(idx);
-    fprintf(stderr, "%d\t %c\n", idx, c);
-  }
+  
+  assertEqual('G', AUV.index2color(0));
+  assertEqual('G', AUV.index2color(1));
+  assertEqual('G', AUV.index2color(2));
+  assertEqual('Y', AUV.index2color(3));
+  assertEqual('Y', AUV.index2color(4));
+  assertEqual('Y', AUV.index2color(5));
+  assertEqual('O', AUV.index2color(6));
+  assertEqual('O', AUV.index2color(7));
+  assertEqual('R', AUV.index2color(8));
+  assertEqual('R', AUV.index2color(9));
+  assertEqual('R', AUV.index2color(10));
+  assertEqual('P', AUV.index2color(11));
 }
 
 
