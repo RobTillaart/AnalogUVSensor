@@ -1,3 +1,11 @@
+
+[![Arduino CI](https://github.com/RobTillaart/AnalogUVSensor/actions/workflows/arduino_test_runner.yml/badge.svg)](https://github.com/RobTillaart/AnalogUVSensor/actions/workflows/arduino_test_runner.yml)
+[![Arduino-lint](https://github.com/RobTillaart/AnalogUVSensor/actions/workflows/arduino-lint.yml/badge.svg)](https://github.com/RobTillaart/AnalogUVSensor/actions/workflows/arduino-lint.yml)
+[![JSON check](https://github.com/RobTillaart/AnalogUVSensor/actions/workflows/jsoncheck.yml/badge.svg)](https://github.com/RobTillaart/AnalogUVSensor/actions/workflows/jsoncheck.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/RobTillaart/AnalogUVSensor/blob/master/LICENSE)
+[![GitHub release](https://img.shields.io/github/release/RobTillaart/AnalogUVSensor.svg?maxAge=3600)](https://github.com/RobTillaart/AnalogUVSensor/releases)
+
+
 # AnalogUVSensor
 
 Arduino library for analogue UV sensor
